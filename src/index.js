@@ -12,6 +12,7 @@ import terra from './assets/astros/Earth.png';
 import marte from './assets/astros/Mars.png';
 
 import PlanetCard from './components/Card/PlanetCard';
+import Search from './components/Search';
 
 const categories = [
   { color: '#5935FF', title: 'Planetas', icon: planet },
@@ -29,6 +30,9 @@ const planets = [
 ];
 ReactDOM.render(
   <div>
+    <div>
+      <Search />
+    </div>
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       {categories.map((category) => (
         <CategoryCard
