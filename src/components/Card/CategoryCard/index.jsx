@@ -12,6 +12,14 @@ const CategoryCard = ({ color, title, icon }) => {
     height: 73px;
     background-color: ${color};
     border-radius: 8px;
+    margin: 8px;
+    transition: 0.4s ease;
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:hover {
+      transform: translateY(-10px);
+    }
   `;
   const Icon = styled.img`
     width: 30px;

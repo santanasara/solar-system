@@ -17,17 +17,17 @@ const Search = () => {
     position: relative;
     display: flex;
     align-items: center;
-    width: 461px;
+    width: 100%;
     height: 8.2em;
     max-height: 51px;
-    background-color: #151515;
+    background-color: #131313;
     padding-left: 15px;
     border-radius: 10px;
   `;
 
   const Icon = styled.img`
     position: absolute;
-    width: calc(12px + 2vh);
+    width: 18px;
     padding-top: 5px;
     height: auto;
     opacity: 50%;

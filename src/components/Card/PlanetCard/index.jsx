@@ -10,8 +10,16 @@ const PlanetCard = ({ title, icon }) => {
     justify-content: center;
     width: 80px;
     height: 109px;
-    background-color: #151515;
+    background-color: #131313;
     border-radius: 8px;
+    margin: 8px;
+    transition: 0.4s ease;
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:hover {
+      transform: translateY(-10px);
+    }
   `;
   const Icon = styled.img`
     width: 70px;
