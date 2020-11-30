@@ -26,7 +26,7 @@ const PlanetCard = ({ title, icon }) => {
     height: auto;
   `;
   const SubTitle = styled.p`
-    margin: 0;
+    margin: 5px 0 0 0;
     padding: 0;
     font-size: 0.7em;
     color: white;

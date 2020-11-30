@@ -38,7 +38,6 @@ const Home = () => {
             <MainTitle title="Olá!" color="pink" />
             <SubTitle title="O que você vai aprender hoje?" />
           </Header>
-
           <ContentWrapper>
             <Search />
           </ContentWrapper>
