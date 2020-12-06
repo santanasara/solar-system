@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  margin: 0 40px;
 `;
 
 export const Header = styled.div`
@@ -14,4 +15,8 @@ export const Header = styled.div`
 
 export const ContentWrapper = styled.div`
   margin-bottom: 30px;
+`;
+export const MainCardWrapper = styled.div`
+  flex: 50%;
+  display: flex;
 `;

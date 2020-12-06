@@ -8,7 +8,7 @@ const CategoryCard = ({ color, title, icon }) => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 78px;
+    min-width: 78px;
     height: 73px;
     background-color: ${color};
     border-radius: 8px;

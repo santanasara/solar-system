@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import searchIcon from '../../assets/icones/Search.png';
 
 const Search = () => {

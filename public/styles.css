@@ -2,3 +2,6 @@ body {
     background-color: #0a0a0a;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+select:focus, option:focus, button:focus, input:focus{
+    outline: none !important;
+  }
