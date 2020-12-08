@@ -35,13 +35,13 @@ const categories = [
 ];
 
 const planets = [
-  { title: 'Mercurio', icon: mercurio },
+  { title: 'Mercúrio', icon: mercurio },
   { title: 'Vênus', icon: venus },
   { title: 'Terra', icon: terra },
   { title: 'Marte', icon: marte },
   { title: 'Sol', icon: sol },
   { title: 'Urano', icon: uranus },
-  { title: 'Jupiter', icon: jupiter },
+  { title: 'Júpiter', icon: jupiter },
   { title: 'Netuno', icon: neptune },
   { title: 'Plutão', icon: pluto },
 ];
@@ -109,9 +109,9 @@ const Home = () => {
           <>
             <div style={{ marginBottom: '15px' }}>
               <SubTitle title="Categorias" />
-              {categories.map((category) => {
+              {categories.map((category, index) => {
                 return (
-                  <div style={{ display: 'inline-block' }}>
+                  <div style={{ display: 'inline-block' }} key={index}>
                     <CategoryCard
                       color={category.color}
                       title={category.title}
@@ -123,9 +123,9 @@ const Home = () => {
             </div>
 
             <SubTitle title="Principais" />
-            {planets.map((planetCard) => {
+            {planets.map((planetCard, index) => {
               return (
-                <Link to="/detail">
+                <Link to={`/detail/${planetCard.title}`} key={index}>
                   <div style={{ display: 'inline-block' }}>
                     <PlanetCard
                       title={planetCard.title}
