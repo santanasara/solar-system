@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const MainCard = ({ title, icon }) => {
+const MainCard = ({ title, icon, about }) => {
   const Card = styled.div`
     display: flex;
     align-items: center;
@@ -36,6 +36,7 @@ const MainCard = ({ title, icon }) => {
     margin: 0;
     padding: 0;
     font-size: 0.8em;
+    text-overflow: ellipsis;
   `;
   return (
     <Card>
@@ -44,10 +45,7 @@ const MainCard = ({ title, icon }) => {
       </div>
       <div style={{ overflow: 'hidden', height: '100%', margin: '0 10px' }}>
         <Title>{title}</Title>
-        <Detail>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-          fugiat minus qui aspernatur odio impedit.
-        </Detail>
+        <Detail>{about}</Detail>
       </div>
     </Card>
   );
@@ -56,5 +54,6 @@ const MainCard = ({ title, icon }) => {
 MainCard.propTypes = {
   icon: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  about: PropTypes.string.isRequired,
 };
 export default MainCard;

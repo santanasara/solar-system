@@ -26,24 +26,27 @@ import pluto from '../../assets/astros/Pluto.png';
 import neptune from '../../assets/astros/Neptune.png';
 import jupiter from '../../assets/astros/Jupiter.png';
 import sol from '../../assets/astros/Sun.png';
+import { getDetail } from './services';
+import { getImage } from '../Utils';
 
 const categories = [
-  { color: '#5935FF', title: 'Planetas', icon: planet },
-  { color: '#FF6CD9', title: 'Asteróides', icon: asteroid },
-  { color: '#01D4E4', title: 'Estrelas', icon: star },
-  { color: '#F9C270', title: 'Galáxias', icon: galaxy },
+  { color: '#5935FF', title: 'Planetas', id: 'planet', icon: planet },
+  { color: '#FF6CD9', title: 'Asteróides', id: 'asteroid', icon: asteroid },
+  { color: '#01D4E4', title: 'Estrelas', id: 'star', icon: star },
+  { color: '#F9C270', title: 'Galáxias', id: 'galaxy', icon: galaxy },
 ];
 
 const planets = [
-  { title: 'Mercúrio', icon: mercurio },
-  { title: 'Vênus', icon: venus },
-  { title: 'Terra', icon: terra },
-  { title: 'Marte', icon: marte },
-  { title: 'Sol', icon: sol },
-  { title: 'Urano', icon: uranus },
-  { title: 'Júpiter', icon: jupiter },
-  { title: 'Netuno', icon: neptune },
-  { title: 'Plutão', icon: pluto },
+  { title: 'Mercúrio', icon: mercurio, id: 0 },
+  { title: 'Vênus', icon: venus, id: 1 },
+  { title: 'Terra', icon: terra, id: 2 },
+  { title: 'Marte', icon: marte, id: 3 },
+  { title: 'Júpiter', icon: jupiter, id: 4 },
+  { title: 'Urano', icon: uranus, id: 6 },
+
+  { title: 'Netuno', icon: neptune, id: 7 },
+  { title: 'Plutão', icon: pluto, id: 8 },
+  { title: 'Sol', icon: sol, id: 9 },
 ];
 const Input = styled.input`
   color: white;
@@ -74,17 +77,36 @@ const Icon = styled.img`
   height: auto;
   opacity: 50%;
 `;
+/* eslint-disable */
 const Home = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [searchResponse, setSearchResponse] = useState([]);
 
   useEffect(() => {
-    console.log(searchInput);
+    if (searchInput === '') {
+      setSearchResponse([]);
+    } else {
+      getDetail(searchInput, 'title').then((response) => {
+        if (response.res) {
+          setSearchResponse(response.msg);
+        }
+      });
+    }
   }, [searchInput]);
+
+  const handleClickCategory = (category) => {
+    console.log('aqui');
+    getDetail(category, 'category').then((response) => {
+      if (response.res) {
+        setSearchResponse(response.msg);
+      }
+    });
+  };
   return (
     <Container>
       <div style={{ width: '60vw' }}>
         <Header>
-          {searchInput === '' ? (
+          {(searchResponse.length === 0  && searchInput === '') ? (
             <>
               <MainTitle title="Olá!" color="pink" />
               <SubTitle title="O que você vai aprender hoje?" />
@@ -105,17 +127,18 @@ const Home = () => {
             </SearchContainer>
           </div>
         </ContentWrapper>
-        {searchInput === '' ? (
+        {(searchResponse.length === 0  && searchInput === '') ? (
           <>
             <div style={{ marginBottom: '15px' }}>
               <SubTitle title="Categorias" />
               {categories.map((category, index) => {
                 return (
-                  <div style={{ display: 'inline-block' }} key={index}>
+                  <div style={{ display: 'inline-block' }} key={index} onClick={() => handleClickCategory(category.id)}>
                     <CategoryCard
                       color={category.color}
                       title={category.title}
                       icon={category.icon}
+                      
                     />
                   </div>
                 );
@@ -125,7 +148,7 @@ const Home = () => {
             <SubTitle title="Principais" />
             {planets.map((planetCard, index) => {
               return (
-                <Link to={`/detail/${planetCard.title}`} key={index}>
+                <Link to={`/detail/${planetCard.id}`} key={index}>
                   <div style={{ display: 'inline-block' }}>
                     <PlanetCard
                       title={planetCard.title}
@@ -142,11 +165,15 @@ const Home = () => {
               display: 'flex',
               flexWrap: 'wrap',
             }}>
-            {planets.map((planetCard) => {
+            {searchResponse.map((planetCard) => {
               return (
-                <Link to="/detail">
+                <Link to={`/detail/${planetCard.id}`}>
                   <MainCardWrapper>
-                    <MainCard title={planetCard.title} icon={planetCard.icon} />
+                    <MainCard
+                      title={planetCard.title}
+                      icon={getImage(planetCard.title)}
+                      about={planetCard.about}
+                    />
                   </MainCardWrapper>
                 </Link>
               );

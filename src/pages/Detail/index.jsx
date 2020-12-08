@@ -1,48 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import mercurio from '../../assets/astros/Mercury.png';
-import venus from '../../assets/astros/Venus.png';
-import terra from '../../assets/astros/Earth.png';
-import marte from '../../assets/astros/Mars.png';
-import uranus from '../../assets/astros/Uranus.png';
-import saturn from '../../assets/astros/Saturn.png';
-import pluto from '../../assets/astros/Pluto.png';
-import neptune from '../../assets/astros/Neptune.png';
-import jupiter from '../../assets/astros/Jupiter.png';
-import sol from '../../assets/astros/Sun.png';
 import { getDetail } from './services';
+import { getImageById } from '../Utils';
 
 const Detail = () => {
   const [data, setData] = useState(undefined);
   const [itemToSearch, setItemToSearch] = useState('');
 
-  const getImage = (title) => {
-    switch (title) {
-      case 'Mercúrio':
-        return mercurio;
-      case 'Vênus':
-        return venus;
-      case 'Terra':
-        return terra;
-      case 'Marte':
-        return marte;
-      case 'Saturno':
-        return saturn;
-      case 'Júpiter':
-        return jupiter;
-      case 'Netuno':
-        return neptune;
-      case 'Pluto':
-        return pluto;
-      case 'Urano':
-        return uranus;
-      case 'Sol':
-        return sol;
-      default:
-        break;
-    }
-    return '';
-  };
   useEffect(() => {
     const searchItem = window.location.href.split('/')[4];
     setItemToSearch(searchItem);
@@ -76,7 +40,7 @@ const Detail = () => {
           width: '100%',
           top: '10%',
         }}>
-        <img src={getImage(itemToSearch)} style={{}} alt="planet" />
+        <img src={getImageById(itemToSearch)} alt="planet" />
       </div>
       <div
         style={{
