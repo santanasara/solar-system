@@ -8,6 +8,7 @@ import pluto from '../../assets/astros/Pluto.png';
 import neptune from '../../assets/astros/Neptune.png';
 import jupiter from '../../assets/astros/Jupiter.png';
 import sol from '../../assets/astros/Sun.png';
+import random from '../../assets/astros/None.png';
 
 export const getImage = (title) => {
   switch (title) {
@@ -32,9 +33,8 @@ export const getImage = (title) => {
     case 'Sol':
       return sol;
     default:
-      break;
+      return random;
   }
-  return '';
 };
 
 export const getImageById = (id) => {
@@ -61,7 +61,6 @@ export const getImageById = (id) => {
     case 9:
       return sol;
     default:
-      break;
+      return random;
   }
-  return '';
 };

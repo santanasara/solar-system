@@ -26,6 +26,8 @@ import pluto from '../../assets/astros/Pluto.png';
 import neptune from '../../assets/astros/Neptune.png';
 import jupiter from '../../assets/astros/Jupiter.png';
 import sol from '../../assets/astros/Sun.png';
+import back from '../../assets/icones/Back.png';
+
 import { getDetail } from './services';
 import { getImage } from '../Utils';
 
@@ -95,7 +97,6 @@ const Home = () => {
   }, [searchInput]);
 
   const handleClickCategory = (category) => {
-    console.log('aqui');
     getDetail(category, 'category').then((response) => {
       if (response.res) {
         setSearchResponse(response.msg);
@@ -106,13 +107,26 @@ const Home = () => {
     <Container>
       <div style={{ width: '60vw' }}>
         <Header>
-          {(searchResponse.length === 0  && searchInput === '') ? (
+          {searchResponse.length === 0 && searchInput === '' ? (
             <>
               <MainTitle title="Olá!" color="pink" />
               <SubTitle title="O que você vai aprender hoje?" />
             </>
           ) : (
-            <MainTitle title="Resultados da busca" />
+            <>
+              <div
+                onClick={() => {setSearchInput('') 
+                setSearchResponse([])}}
+                style={{ marginBottom: '10px' }}>
+                <img
+                  src={back}
+                  alt="backbutton"
+                  style={{ width: '30px', height: 'auto' }}
+                />
+              </div>
+
+              <MainTitle title="Resultados da busca" />
+            </>
           )}
         </Header>
         <ContentWrapper>
@@ -127,18 +141,20 @@ const Home = () => {
             </SearchContainer>
           </div>
         </ContentWrapper>
-        {(searchResponse.length === 0  && searchInput === '') ? (
+        {searchResponse.length === 0 && searchInput === '' ? (
           <>
             <div style={{ marginBottom: '15px' }}>
               <SubTitle title="Categorias" />
               {categories.map((category, index) => {
                 return (
-                  <div style={{ display: 'inline-block' }} key={index} onClick={() => handleClickCategory(category.id)}>
+                  <div
+                    style={{ display: 'inline-block' }}
+                    key={index}
+                    onClick={() => handleClickCategory(category.id)}>
                     <CategoryCard
                       color={category.color}
                       title={category.title}
                       icon={category.icon}
-                      
                     />
                   </div>
                 );

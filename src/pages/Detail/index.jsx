@@ -40,7 +40,11 @@ const Detail = () => {
           width: '100%',
           top: '10%',
         }}>
-        <img src={getImageById(itemToSearch)} alt="planet" />
+        <img
+          src={getImageById(itemToSearch)}
+          alt="planet"
+          style={{ maxWidth: 250, height: 'auto' }}
+        />
       </div>
       <div
         style={{
