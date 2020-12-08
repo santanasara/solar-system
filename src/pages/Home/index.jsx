@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Header,
@@ -124,9 +125,14 @@ const Home = () => {
             <SubTitle title="Principais" />
             {planets.map((planetCard) => {
               return (
-                <div style={{ display: 'inline-block' }}>
-                  <PlanetCard title={planetCard.title} icon={planetCard.icon} />
-                </div>
+                <Link to="/detail">
+                  <div style={{ display: 'inline-block' }}>
+                    <PlanetCard
+                      title={planetCard.title}
+                      icon={planetCard.icon}
+                    />
+                  </div>
+                </Link>
               );
             })}
           </>
@@ -138,9 +144,11 @@ const Home = () => {
             }}>
             {planets.map((planetCard) => {
               return (
-                <MainCardWrapper>
-                  <MainCard title={planetCard.title} icon={planetCard.icon} />
-                </MainCardWrapper>
+                <Link to="/detail">
+                  <MainCardWrapper>
+                    <MainCard title={planetCard.title} icon={planetCard.icon} />
+                  </MainCardWrapper>
+                </Link>
               );
             })}
           </div>
