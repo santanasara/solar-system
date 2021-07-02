@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/',
+  baseURL: 'https://sistema-solar-api.herokuapp.com/',
 });
 
 export const getDetail = async (filter, searchBy) => {

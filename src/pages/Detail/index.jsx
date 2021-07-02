@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import { getDetail } from './services';
 import { getImageById } from '../Utils';
+import back from '../../assets/icones/Back.png';
+/* eslint-disable */
 
 const Detail = () => {
   const [data, setData] = useState(undefined);
@@ -24,6 +26,23 @@ const Detail = () => {
         maxHeight: '100%',
         background: 'white',
       }}>
+      <Link to="/">
+        <div>
+          <img
+            src={back}
+            alt="backbutton"
+            style={{
+              width: '30px',
+              height: 'auto',
+              position: 'absolute',
+              top: '10%',
+              left: '5%',
+              zIndex: 100
+            }}
+          />
+        </div>
+      </Link>
+
       <div
         style={{
           backgroundColor: '#151515',
